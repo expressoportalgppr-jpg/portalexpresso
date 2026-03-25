@@ -1,1 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Brother Telecom | Internet Rápida e Estável</title>
+    <!-- Bootstrap 5 CSS + Icons + Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts para um visual moderno -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+        /* Cores personalizadas (inspiradas em conectividade, confiança) */
+        :root {
+            --brother-blue: #0a58ca;
+            --brother-dark: #0b2b4b;
+            --brother-accent: #00a8e8;
+            --brother-success: #198754;
+            --brother-light: #eef2ff;
+        }
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            padding: 0.8rem 0;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.7rem;
+            color: var(--brother-dark);
+        }
+        .navbar-brand span {
+            color: var(--brother-accent);
+        }
+        .nav-link {
+            font-weight: 600;
+            color: #1e2a3e;
+            margin: 0 0.5rem;
+            transition: 0.2s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--brother-blue);
+        }
+        .btn-primary-custom {
+            background-color: var(--brother-blue);
+            border: none;
+            padding: 10px 24px;
+            font-weight: 600;
+            border-radius: 40px;
+            transition: 0.3s;
+        }
+        .btn-primary-custom:hover {
+            background-color: #084298;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(10,88,202,0.3);
+        }
+        .hero {
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+            padding: 80px 0 60px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .hero h1 {
+            font-weight: 800;
+            font-size: 3rem;
+            color: var(--brother-dark);
+        }
+        .hero .badge-speed {
+            background-color: #e9ecef;
+            color: #0a58ca;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 6px 18px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .card-feature {
+            border: none;
+            border-radius: 1.5rem;
+            padding: 1.8rem 1rem;
+            transition: all 0.2s ease;
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        .card-feature:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            background: #eef2ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 2rem;
+            color: var(--brother-blue);
+        }
+        .section-title {
+            font-weight: 800;
+            font-size: 2.2rem;
+            color: var(--brother-dark);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--brother-accent);
+            border-radius: 3px;
+        }
+        .info-card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+            height: 100%;
+            transition: 0.2s;
+        }
+        .info-card i {
+            font-size: 2rem;
+            color: var(--brother-blue);
+        }
+        .bg-soft-primary {
+            background-color: #e9f0fe;
+        }
+        footer {
+            background-color: #0b2b4b;
+            color: #d1e3f0;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: #cbd5e1;
+            transition: 0.2s;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+        .btn-outline-light-custom {
+            border: 1px solid #5b7c9e;
+            color: white;
+            border-radius: 40px;
+            padding: 8px 22px;
+            font-weight: 500;
+        }
+        .btn-outline-light-custom:hover {
+            background-color: #00a8e8;
+            border-color: #00a8e8;
+            color: white;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 32px;
+            line-height: 60px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: 0.2s;
+        }
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            color: white;
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
 
+<!-- WhatsApp flutuante (número fictício baseado no telefone) -->
+<a href="https://wa.me/552138673729?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20planos%20Brother%20Telecom." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="bi bi-whatsapp"></i>
+</a>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Brother<span>Telecom</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                <li class="nav-item"><a class="nav-link active" href="#home">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="#planos">Planos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                    <a href="#contato" class="btn btn-primary-custom text-white">Assine Já</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div class="badge-speed mb-3"><i class="bi bi-lightning-charge-fill me-1"></i> Fibra Óptica | Até 1 GIGA</div>
+                <h1 class="mb-3">Internet rápida, estável e sem franquia</h1>
+                <p class="lead text-secondary mb-4">Conecte-se com a <strong>Brother Telecom</strong>, a provedora que realmente entende suas necessidades. Jogue, estude e trabalhe com a máxima performance.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#planos" class="btn btn-primary-custom text-white px-4 py-3">Conheça os planos <i class="bi bi-arrow-right-short"></i></a>
+                    <a href="#contato" class="btn btn-outline-secondary px-4 py-3 rounded-pill">Fale com um especialista</a>
+                </div>
+                <div class="mt-4 d-flex gap-4 text-secondary small">
+                    <span><i class="bi bi-check-circle-fill text-success me-1"></i> 99,9% de disponibilidade</span>
+                    <span><i class="bi bi-shield-check me-1"></i> Suporte técnico local</span>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="https://placehold.co/600x400/eef2ff/0a58ca?text=Brother+Fibra" class="img-fluid rounded-4 shadow-lg" alt="conexão fibra óptica" style="max-width: 100%;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Seção de Diferenciais / Ícones e Frases -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="text-primary fw-semibold">Por que escolher a Brother?</span>
+            <h2 class="section-title">Tecnologia e confiança que fazem a diferença</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card-feature text-center">
+                    <div class="icon-circle"><i class="bi bi-wifi"></i></div>
+                    <h5 class="fw-bold">Fibra até o talo</h5>
+                    <p class="text-secondary">Tecnologia FTTH com latência reduzida, ideal para gamers, streamers e home office.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-feature text-center">
+                    <div class="icon-circle"><i class="bi bi-headset"></i></div>
+                    <h5 class="fw-bold">Suporte humano</h5>
+                    <p class="text-secondary">Atendimento local, ágil e resolutivo. Fale com quem entende do bairro!</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-feature text-center">
+                    <div class="icon-circle"><i class="bi bi-currency-dollar"></i></div>
+                    <h5 class="fw-bold">Preço justo</h5>
+                    <p class="text-secondary">Planos a partir de R$ 79,90/mês sem surpresas na fatura. Custo-benefício imbatível.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Planos sugeridos (exemplo) -->
+<section id="planos" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Planos sob medida para você</h2>
+            <p class="text-secondary w-75 mx-auto">Escolha a velocidade que combina com seu estilo e tenha Wi-Fi de alta performance em todos os ambientes.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4 text-center">
+                        <i class="bi bi-speedometer2 fs-1 text-primary"></i>
+                        <h3 class="fw-bold mt-3">300 Mega</h3>
+                        <p class="text-secondary">Ideal para famílias com até 4 dispositivos simultâneos.</p>
+                        <div class="display-6 fw-bold text-primary">R$ 79,90<span class="fs-6 text-secondary">/mês</span></div>
+                        <hr>
+                        <ul class="list-unstyled text-start mt-3">
+                            <li><i class="bi bi-check-lg text-success me-2"></i> Fibra óptica simétrica</li>
+                            <li><i class="bi bi-check-lg text-success me-2"></i> Wi-Fi 6 integrado</li>
+                            <li><i class="bi bi-check-lg text-success me-2"></i> Sem fidelidade*</li>
+                        </ul>
+                        <a href="#contato" class="btn btn-outline-primary rounded-pill w-100 mt-3">Quero esse</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 border-top border-4 border-primary">
+                    <div class="card-body p-4 text-center">
+                        <i class="bi bi-trophy-fill fs-1 text-warning"></i>
+                        <h3 class="fw-bold mt-3">500 Mega</h3>
+                        <p class="text-secondary">Perfeito para streaming 4K, home office e múltiplos dispositivos.</p>
+                        <div class="display-6 fw-bold text-primary">R$ 109,90<span class="fs-6 text-secondary">/mês</span></div>
+                        <hr>
+                        <ul class="list-unstyled text-start mt-3">
+                            <li><i class="bi bi-check-lg text-success me-2"></i> 500MB download e upload</li>
+                            <li><i class="bi bi-check-lg text-success me-2"></i> Roteador mesh compatível</li>
+                            <li><i class="bi bi-check-lg text-success me-2"></i> Instalação grátis</li>
+                        </ul>
+                        <a href="#contato" class="btn btn-primary rounded-pill w-100 mt-3">Assinar agora</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4 text-center">
+                        <i class="bi bi-rocket-takeoff fs-1 text-primary"></i>
+                        <h3 class="fw-bold mt-3">1 GIGA</h3>
+                        <p class="text-secondary">Velocidade máxima para gamers, criadores de conteúdo e muito mais.</p>
+                        <div class="display-6 fw-bold text-primary">R$ 159,90<span class="fs-6 text-secondary">/mês</span></div>
+                        <hr>
+                        <ul class="list-unstyled text-start mt-3">
+                            <li><i class="bi bi-check-lg text-success me-2"></i> 1000MB ultrarrápido</li>
+                            <li><i class="bi bi-check-lg text-success me-2"></i> Suporte prioritário 24h</li>
+                            <li><i class="bi bi-check-lg text-success me-2"></i> Inclui segurança digital</li>
+                        </ul>
+                        <a href="#contato" class="btn btn-outline-primary rounded-pill w-100 mt-3">Garantir vaga</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="text-center text-muted small mt-4">*Consulte condições de fidelidade em planos promocionais.</p>
+    </div>
+</section>
+
+<!-- Seção Sobre / Informações da Empresa (dados do CNPJ, situação, capital etc) -->
+<section id="sobre" class="py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-2 px-3 py-2">+7 anos de experiência</span>
+                <h2 class="section-title" style="margin-bottom: 1.5rem;">Quem é a Brother Telecom</h2>
+                <p class="text-secondary">Somos uma provedora de internet registrada e ativa desde 2018, comprometida em levar conectividade de qualidade para o Rio de Janeiro. Com matriz em Benfica, atendemos residências e empresas com seriedade e tecnologia de ponta.</p>
+                <div class="row mt-4">
+                    <div class="col-sm-6 mb-3">
+                        <div class="info-card">
+                            <i class="bi bi-building"></i>
+                            <h6 class="fw-bold mt-2">CNPJ</h6>
+                            <p class="mb-0 small">30.571.546/0001-63</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="info-card">
+                            <i class="bi bi-calendar-check"></i>
+                            <h6 class="fw-bold mt-2">Abertura</h6>
+                            <p class="mb-0 small">28/05/2018 • 7 anos, 9 meses e 28 dias</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="info-card">
+                            <i class="bi bi-bank2"></i>
+                            <h6 class="fw-bold mt-2">Natureza Jurídica</h6>
+                            <p class="mb-0 small">Sociedade Empresária Limitada</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="info-card">
+                            <i class="bi bi-graph-up"></i>
+                            <h6 class="fw-bold mt-2">Capital Social</h6>
+                            <p class="mb-0 small">R$ 95.400,00</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="info-card">
+                            <i class="bi bi-check2-circle"></i>
+                            <h6 class="fw-bold mt-2">Situação Cadastral</h6>
+                            <p class="mb-0 small text-success fw-semibold">ATIVA (desde 28/05/2018)</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="info-card">
+                            <i class="bi bi-file-text"></i>
+                            <h6 class="fw-bold mt-2">Optante pelo Simples</h6>
+                            <p class="mb-0 small">Sim (desde 01/01/2025)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-soft-primary rounded-4 p-4 shadow-sm">
+                    <div class="d-flex mb-3">
+                        <i class="bi bi-geo-alt-fill fs-1 text-primary me-3"></i>
+                        <div>
+                            <h5 class="fw-bold">Nossa Matriz</h5>
+                            <p class="mb-0">Rua Leopoldo Bulhoes, 169 - Complemento: Rua Carlos Chagas Manguinhos<br>
+                            Bairro: Benfica, Rio de Janeiro - RJ, CEP: 20911-300</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex mb-3">
+                        <i class="bi bi-telephone-fill fs-1 text-primary me-3"></i>
+                        <div>
+                            <h5 class="fw-bold">Central de Vendas e Suporte</h5>
+                            <p class="mb-0"><strong>(21) 3867-3729</strong> | WhatsApp: (21) 99999-3729 (clique no ícone flutuante)</p>
+                        </div>
+                    </div>
+                    <div class="alert alert-light mt-3 border-0 shadow-none" role="alert">
+                        <i class="bi bi-envelope-paper"></i> Para correspondência:<br>
+                        <strong>Brother Telecom Provedora de Internet LTDA</strong><br>
+                        Rua Leopoldo Bulhoes 169 - Rua Carlos Chagas Manguinhos, Benfica<br>
+                        Rio de Janeiro - RJ, CEP 20911-300
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Seção de estatística / frase impactante -->
+<section class="py-4 bg-white">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <i class="bi bi-quote fs-1 text-primary opacity-50"></i>
+                <p class="fs-3 fw-light">“Na Brother Telecom, não vendemos apenas internet, entregamos liberdade para se conectar com quem importa.”</p>
+                <p class="fw-semibold">— Equipe Brother, desde 2018.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contato + Formulário integrado com dados (exemplo) -->
+<section id="contato" class="py-5 bg-light">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <h2 class="section-title mb-4">Fale com a Brother</h2>
+                <p class="text-secondary">Tire dúvidas, solicite uma visita técnica ou assine seu plano em poucos minutos. Atendimento rápido e personalizado.</p>
+                <ul class="list-unstyled mt-4">
+                    <li class="mb-3"><i class="bi bi-telephone-inbound fs-5 me-3 text-primary"></i> <strong>(21) 3867-3729</strong> (Ligar / WhatsApp)</li>
+                    <li class="mb-3"><i class="bi bi-envelope fs-5 me-3 text-primary"></i> contato@brothertelecom.com.br</li>
+                    <li class="mb-3"><i class="bi bi-geo-alt fs-5 me-3 text-primary"></i> Rua Leopoldo Bulhoes, 169 - Benfica, Rio de Janeiro</li>
+                </ul>
+                <div class="mt-4 p-3 bg-white rounded-3">
+                    <i class="bi bi-clock-history"></i> <strong>Horário de atendimento:</strong><br>
+                    Segunda a sexta: 8h às 20h | Sábado: 9h às 14h
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="card border-0 shadow rounded-4 p-4">
+                    <h4 class="fw-bold mb-3">Solicite contato ou assinatura</h4>
+                    <form action="#" method="post">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nome completo</label>
+                                <input type="text" class="form-control" placeholder="Seu nome" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Telefone / WhatsApp</label>
+                                <input type="tel" class="form-control" placeholder="(21) 99999-9999" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">E-mail</label>
+                                <input type="email" class="form-control" placeholder="contato@exemplo.com" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Mensagem ou plano de interesse</label>
+                                <textarea class="form-control" rows="3" placeholder="Gostaria de conhecer os planos de 500 Mega..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary-custom text-white w-100 py-2">Enviar mensagem <i class="bi bi-send"></i></button>
+                                <div class="form-text mt-2">Retornaremos em até 2h úteis.</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer com informações de registro e localização -->
+<footer class="pt-5 pb-4">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-4">
+                <h4 class="fw-bold text-white">Brother<span class="text-info">Telecom</span></h4>
+                <p class="small text-white-50">Conectividade que aproxima pessoas e impulsiona negócios. Qualidade e compromisso no Rio de Janeiro.</p>
+                <div class="mt-3">
+                    <i class="bi bi-c-circle"></i> 2018 - <span id="ano"></span> Brother Telecom. Todos os direitos reservados.
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h6 class="fw-bold text-white mb-3">Institucional</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white-50 text-decoration-none">Sobre a Brother</a></li>
+                    <li class="mt-2"><a href="#" class="text-white-50 text-decoration-none">Código de ética</a></li>
+                    <li class="mt-2"><a href="#" class="text-white-50 text-decoration-none">Trabalhe conosco</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h6 class="fw-bold text-white mb-3">Suporte</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white-50 text-decoration-none">Central de ajuda</a></li>
+                    <li class="mt-2"><a href="#" class="text-white-50 text-decoration-none">2ª via de boleto</a></li>
+                    <li class="mt-2"><a href="#" class="text-white-50 text-decoration-none">Área do assinante</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2">
+                <h6 class="fw-bold text-white mb-3">CNPJ</h6>
+                <p class="small text-white-50 mb-0">30.571.546/0001-63</p>
+                <p class="small text-white-50">Micro Empresa | Simples Nacional</p>
+                <a href="#contato" class="btn btn-outline-light-custom btn-sm mt-2">Assine já <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+        <hr class="mt-4 opacity-25">
+        <div class="row text-center small text-white-50">
+            <div class="col-12">
+                <span>Rua Leopoldo Bulhoes, 169 - Benfica | Rio de Janeiro - RJ, CEP 20911-300</span><br>
+                <span>Correspondência: Brother Telecom Provedora de Internet LTDA - Rua Leopoldo Bulhoes 169, Benfica, RJ, 20911-300</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Ano dinâmico no footer
+    document.getElementById('ano').innerText = new Date().getFullYear();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
